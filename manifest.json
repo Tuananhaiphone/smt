@@ -1,11 +1,10 @@
 {
-  "name": "My PWA App",
-  "short_name": "PWA App",
-  "description": "A simple Progressive Web App",
-  "start_url": "/",
+  "name": "My PWA",
+  "short_name": "PWA",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#4CAF50",
   "icons": [
     {
       "src": "icon-192x192.png",
