@@ -3,19 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My PWA</title>
+  <title>PWA Web App</title>
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').then(() => {
-        console.log('Service Worker Registered');
-      });
-    }
-  </script>
 </head>
 <body>
-  <h1>Welcome to My PWAAAAAAAAAAAAA!</h1>
-  <button onclick="alert('Hello from PWA!')">Click Me</button>
+  <h1>Welcome to My PWA App</h1>
+  <p>This is a simple PWA app hosted on GitHub Pages.</p>
+
+  <script src="app.js"></script>
 </body>
 </html>
