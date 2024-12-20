@@ -21,4 +21,15 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-
+function addToHomeScreen() {
+  var a2hsPrompt = document.getElementById('a2hs-prompt');
+  // Hiển thị thông báo
+  a2hsPrompt.style.display = 'block';
+  // Đăng ký sự kiện nhấp vào nút "Thêm"
+  document.getElementById('a2hs-button').addEventListener('click', function() {
+    // Thêm ứng dụng vào màn hình chính
+    addToHomeScreen.prompt.prompt();
+    // Ẩn thông báo
+    a2hsPrompt.style.display = 'none';
+  });
+}
