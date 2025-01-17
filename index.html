@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <title>My PWA App</title>
+
+  <!-- Link manifest.json -->
+  <link rel="manifest" href="\\acvnas03\ACVNAS03_DATA\60.pd\03. SMT\3. Method\9. File tam\python_k-xoa_T.anh\New folder\pawweb\manifest.json">
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="\\acvnas03\ACVNAS03_DATA\60.pd\03. SMT\3. Method\9. File tam\python_k-xoa_T.anh\New folder\pawweb\style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="\\acvnas03\ACVNAS03_DATA\60.pd\03. SMT\3. Method\9. File tam\python_k-xoa_T.anh\New folder\pawweb\icon192.png" type="image/png">
+
+  <style>
+    /* Inline basic styling (nếu không dùng file style.css) */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #666;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Welcome to My PWA</h1>
+    <p>This is a simple Progressive Web App example deployed on GitHub Pages.</p>
+    <button id="installButton">Install App</button>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Kiểm tra Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('./service-worker.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch((error) => console.error('Service Worker Registration Failed:', error));
+    }
+
+    // Thêm logic Install PWA
+    let deferredPrompt;
+    const installButton = document.getElementById('installButton');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Ngăn trình duyệt hiển thị lời nhắc mặc định
+      e.preventDefault();
+      // Lưu lại sự kiện
+      deferredPrompt = e;
+      // Hiển thị nút Install
+      installButton.style.display = 'block';
+
+      installButton.addEventListener('click', () => {
+        // Hiển thị lời nhắc Install
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      });
+    });
+
+    window.addEventListener('appinstalled', () => {
+      console.log('PWA was installed');
+    });
+  </script>
+</body>
+</html>
